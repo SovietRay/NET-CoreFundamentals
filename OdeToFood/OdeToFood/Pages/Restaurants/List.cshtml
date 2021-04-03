@@ -4,12 +4,12 @@
 }
 <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 
-<h1>Restaurants!!!</h1>
+<h1>List of restaurants</h1>
 
 <form method="get">
     <div class="form-group">
         <div class="input-group mb-3">
-            <input type="search" class="form-control" placeholder="Input name..." aria-label="Search" aria-describedby="basic-addon2" value="" name="searchTerm" />
+            <input type="search" class="form-control" placeholder="Input name..." aria-label="Search" aria-describedby="basic-addon2" asp-for="SearchTerm" />
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
             </div>
@@ -17,15 +17,24 @@
     </div>
 </form>
 
-<table class="table">
-    @foreach (var restaurant in Model.Restaurants)
-    {
+<table class="table table-hover">
+    <thead>
         <tr>
-            <td>@restaurant.Name</td>
-            <td>@restaurant.Location</td>
-            <td>@restaurant.Cuisine</td>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Cuisine</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <tr>
+                <td>@restaurant.Name</td>
+                <td>@restaurant.Location</td>
+                <td>@restaurant.Cuisine</td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 <div>@Model.Message</div>
