@@ -1,0 +1,41 @@
+﻿@page "{restaurantId:int?}"
+@model OdeToFood.Pages.Restaurants.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-12 px-0">
+        <h3><span class="badge badge-secondary">ID:@Model.Restaurant.Id</span> <span class="badge badge-warning">Edit</span></h3>
+        <form method="post" class="row g-3">
+            <input type="hidden" asp-for="Restaurant.Id" />
+            <div class="col-sm-7">
+                <div class="form-outline">
+                    <input asp-for="Restaurant.Name" class="form-control" />
+                    <label asp-for="Restaurant.Name" class="form-label">Name</label>
+                    <span class="text-danger" asp-validation-for="Restaurant.Name"></span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-outline">
+                    <input asp-for="Restaurant.Location" class="form-control" />
+                    <label asp-for="Restaurant.Location" class="form-label">Location</label>
+                    <span class="text-danger" asp-validation-for="Restaurant.Location"></span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-outline">
+                    <select asp-for="Restaurant.Cuisine" class="form-control"
+                            asp-items="Model.Cuisines">
+                    </select>
+                    <label asp-for="Restaurant.Cuisine" class="form-label">Cuisine</label>
+                    <span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        <p class="lead mb-0"><a asp-page="./List" class="text-white font-weight-bold">All restaurants...</a></p>
+    </div>
+</div>

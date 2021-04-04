@@ -1,40 +1,59 @@
 ﻿@page
 @model OdeToFood.Pages.Restaurants.ListModel
 @{
+    ViewData["Title"] = "List";
 }
 <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 
-<h1>List of restaurants</h1>
 
-<form method="get">
-    <div class="form-group">
-        <div class="input-group mb-3">
-            <input type="search" class="form-control" placeholder="Input name..." aria-label="Search" aria-describedby="basic-addon2" asp-for="SearchTerm" />
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <input type="search" class="form-control" placeholder="Input name..." aria-label="Search" aria-describedby="basic-addon2" asp-for="SearchTerm" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                </div>
             </div>
         </div>
+    </form>
+</div>
+
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <div>
+        <h1 class="display-4" style="display: inline-block" >List of restaurants </h1>
+        <a asp-page="./Edit" class="badge badge-primary" style="vertical-align: top; font-size: 15px">Add</a>
     </div>
-</form>
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Location</th>
-            <th scope="col">Cuisine</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var restaurant in Model.Restaurants)
-        {
+    <table class="table table-dark">
+        <thead>
             <tr>
-                <td>@restaurant.Name</td>
-                <td>@restaurant.Location</td>
-                <td>@restaurant.Cuisine</td>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Cuisine</th>
+                <th scope="col">Options</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Model.Restaurants)
+            {
+                <tr>
+                    <td>@restaurant.Name</td>
+                    <td>@restaurant.Location</td>
+                    <td>@restaurant.Cuisine</td>
+                    <td>
+                        <a class="btn btn-link"
+                           asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <a class="btn btn-link"
+                           asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-<div>@Model.Message</div>
