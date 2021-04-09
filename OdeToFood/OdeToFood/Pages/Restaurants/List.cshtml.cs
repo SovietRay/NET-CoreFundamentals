@@ -14,7 +14,7 @@ namespace OdeToFood.Pages.Restaurants
     {
         private readonly IConfiguration configuration;
         private readonly IRestaurantData restaurantData;
-
+        [TempData]
         public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
         
@@ -32,7 +32,7 @@ namespace OdeToFood.Pages.Restaurants
         {
             //HttpContext.Request.QueryString
             //SearchTerm = searchTerm;
-            Message = configuration["Message"];
+            //Message = configuration["Message"];
             Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }

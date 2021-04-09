@@ -38,6 +38,9 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <footer>
+            @RenderSection("Footer", required: false)
+        </footer>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
