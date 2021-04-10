@@ -1,0 +1,31 @@
+﻿@using OdeToFood.Core
+@model Restaurant
+
+    <div class="col">
+        <div class="card my-lg-3 bg-dark text-white">
+            <img src="https://a.cdn-hotels.com/gdcs/production122/d263/8de48753-f9ec-47b7-a428-52f40961e850.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">
+                    <span class="badge badge-secondary">ID:@Model.Id</span>
+                    <span class="badge badge-secondary"><i class="fas fa-map-marker-alt"></i> @Model.Location</span>
+                    <span class="badge badge-secondary"><i class="fas fa-drumstick-bite"></i> @Model.Cuisine</span><br />
+                    A restaurant (sometimes known as a diner) is a place where cooked food is sold to the public, and where people sit down to eat it. It is also a place where people go to enjoy the time and to eat a meal.
+                </p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-link"
+                   asp-page="./Detail" asp-route-restaurantId="@Model.Id">
+                    <i class="fas fa-link"></i>
+                </a>
+                <a class="btn btn-link"
+                   asp-page="./Edit" asp-route-restaurantId="@Model.Id">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a class="btn btn-link"
+                   asp-page="./Delete" asp-route-restaurantId="@Model.Id">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>

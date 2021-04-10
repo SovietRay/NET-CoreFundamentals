@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "List";
 }
-<link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+
 
 
 
@@ -31,42 +31,15 @@
         <h1 class="display-4" style="display: inline-block">List of restaurants </h1>
         <a asp-page="./Edit" class="badge badge-primary" style="vertical-align: top; font-size: 15px">Add</a>
     </div>
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Location</th>
-                <th scope="col">Cuisine</th>
-                <th scope="col">Options</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var restaurant in Model.Restaurants)
-            {
-                <tr>
-                    <td>@restaurant.Name</td>
-                    <td>@restaurant.Location</td>
-                    <td>@restaurant.Cuisine</td>
-                    <td>
-                        <a class="btn btn-link"
-                           asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">
-                            <i class="fas fa-link"></i>
-                        </a>
-                        <a class="btn btn-link"
-                           asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a class="btn btn-link"
-                           asp-page="./Delete" asp-route-restaurantId="@restaurant.Id">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+
 </div>
 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <partial name="_Summary" model="restaurant" />
+    }
+</div>
 @section footer {
     <div>
         <!-- Copyright -->
