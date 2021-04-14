@@ -13,14 +13,14 @@
                 <div class="form-outline">
                     <input asp-for="Restaurant.Name" class="form-control" />
                     <label asp-for="Restaurant.Name" class="form-label">Name</label>
-                    <span class="text-danger" asp-validation-for="Restaurant.Name"></span>
+                    <br /><span class="text-danger" asp-validation-for="Restaurant.Name"></span>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="form-outline">
                     <input asp-for="Restaurant.Location" class="form-control" />
                     <label asp-for="Restaurant.Location" class="form-label">Location</label>
-                    <span class="text-danger" asp-validation-for="Restaurant.Location"></span>
+                    <br /><span class="text-danger" asp-validation-for="Restaurant.Location"></span>
                 </div>
             </div>
             <div class="col-sm">
@@ -29,7 +29,7 @@
                             asp-items="Model.Cuisines">
                     </select>
                     <label asp-for="Restaurant.Cuisine" class="form-label">Cuisine</label>
-                    <span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>
+                    <br /><span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>
                 </div>
             </div>
             <div class="col-sm">
@@ -39,3 +39,7 @@
         <p class="lead mb-0"><a asp-page="./List" class="text-white font-weight-bold">All restaurants...</a></p>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
